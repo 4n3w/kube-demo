@@ -1,26 +1,23 @@
 
-
-NAMESPACE=kube-demo
-
-kubectl create namespace $NAMESPACE
+kubectl create namespace kube-demo
 
 # Create the pods 
-kubectl --namespace=$NAMESPACE create -f resources/demo-deployment.yml
+kubectl create -f resources/demo-deployment.yml -n kube-demo
 
 # Inspect the deployment
 
-kubectl --namespace=$NAMESPACE get deployments
-kubectl --namespace=$NAMESPACE get pods
+kubectl  get deployments -n kube-demo
+kubectl  get pods -n kube-demo
 
-kubectl --namespace=$NAMESPACE get pods
+kubectl  get pods -n kube-demo
 
 # Create the Service
-kubectl --namespace=$NAMESPACE create -f resources/demo-service.yml
+kubectl  create -f resources/demo-service.yml -n kube-demo
 
 # Route a hostname to the service via ingress
 
 # Before we can do this, we need to enable the ingress plugin for minikube 
 # https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/
 
-kubectl --namespace=$NAMESPACE create -f resources/demo-ingress.yml
+kubectl  create -f resources/demo-ingress.yml -n kube-demo
 
