@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: kube-demo
+  namespace: kube-demo
+spec:
+  selector:
+    app: kube-demo
+    tier: web
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 2015
+    name: http

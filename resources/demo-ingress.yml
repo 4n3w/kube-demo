@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kube-demo
+  namespace: kube-demo
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: kube-demo.anew.io
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: kube-demo
+          servicePort: 80
